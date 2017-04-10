@@ -4,9 +4,18 @@ package com.vther.java8.time;
 import org.junit.Test;
 
 import java.time.*;
+import java.util.Date;
 
 public class _06_Java8TimeTransfer {
 
+
+    @Test
+    public void testNewOldDateConversion() {
+        Instant instant = new Date().toInstant();
+        Date date = Date.from(instant);
+        System.out.println(instant);
+        System.out.println(date);
+    }
 
     @Test
     public void localDateTime() {
@@ -43,4 +52,6 @@ public class _06_Java8TimeTransfer {
         Period period = Period.between(LocalDate.now().minusDays(1L), LocalDate.now());
         System.out.println(LocalTime.now().plus(period));
     }
+
+
 }

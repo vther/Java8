@@ -4,6 +4,8 @@ import org.junit.Test;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.temporal.ChronoField;
@@ -14,14 +16,22 @@ public class _08_Java8DateTimeFormatter {
     @Test
     public void useDateFormatter() {
 
+
+        System.out.println("ISO_LOCAL_DATE-------------> " + LocalDate.now().format(DateTimeFormatter.ISO_LOCAL_DATE));
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        System.out.println(LocalDate.now().format(DateTimeFormatter.ISO_LOCAL_DATE));
-        System.out.println(LocalDate.now().format(formatter));
+        System.out.println("dd/MM/yyyy-----------------> " + LocalDate.now().format(formatter));
 
 
-        DateTimeFormatter hwsFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'hh:mm:ss'Z'");
-        System.out.println(LocalDateTime.now().format(hwsFormatter));
+        System.out.println("ISO_LOCAL_DATE_TIME--------> " + LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
+        System.out.println("ISO_DATE_TIME--------------> " + LocalDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME));
 
+
+        ZonedDateTime zonedDateTime = ZonedDateTime.of(LocalDateTime.now(), ZoneId.of("Asia/Shanghai"));
+        System.out.println("ISO_INSTANT----------------> " + zonedDateTime.format(DateTimeFormatter.ISO_INSTANT));
+
+
+        //DateTimeFormatter hwsFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'hh:mm:ss'Z'");
+        //System.out.println("yyyy-MM-dd'T'hh:mm:ss'Z'---> " + LocalDateTime.now().format(hwsFormatter));
 
         DateTimeFormatter complexFormatter = new DateTimeFormatterBuilder()
                 .appendText(ChronoField.YEAR)
@@ -39,5 +49,6 @@ public class _08_Java8DateTimeFormatter {
                 .parseCaseInsensitive()
                 .toFormatter();
         System.out.println(LocalDateTime.now().format(complexFormatter));
+
     }
 }
