@@ -1,4 +1,4 @@
-package com.vther.java8.time;
+package com.vther.java.time;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
