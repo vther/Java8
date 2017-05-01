@@ -8,13 +8,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class _07_ThenApiOfCompletableFuture {
-
-    public static void main(String[] args) throws InterruptedException {
-
-
-        Thread.currentThread().join();
-    }
+public class _07_BothEitherAnyOfCompletableFuture {
 
 
     /**
@@ -106,7 +100,7 @@ public class _07_ThenApiOfCompletableFuture {
     @Test
     public void testAnyOf() {
         List<CompletableFuture<Double>> collect = Stream.of(1, 2, 3, 4)
-                .map(i -> CompletableFuture.supplyAsync(_07_ThenApiOfCompletableFuture::get))
+                .map(i -> CompletableFuture.supplyAsync(_07_BothEitherAnyOfCompletableFuture::get))
                 .collect(Collectors.toList());
 
         CompletableFuture.anyOf(collect.toArray(new CompletableFuture[collect.size()]))
