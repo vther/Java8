@@ -1,7 +1,6 @@
 package com.vther.java.time;
 
 
-import com.vther.java.time.DateUtil;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -9,6 +8,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 public class _02_UseSimpleDateFormatProperly {
+
+    private static final ThreadLocal<SimpleDateFormat> FORMAT = ThreadLocal.withInitial(() -> new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'"));
 
     @Test
     public void useSimpleDateFormatProperly1() {
@@ -25,8 +26,6 @@ public class _02_UseSimpleDateFormatProperly {
             }).start();
         }
     }
-
-    private static final ThreadLocal<SimpleDateFormat> FORMAT = ThreadLocal.withInitial(() -> new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'"));
 
     @Test
     public void useSimpleDateFormatProperly2() {
