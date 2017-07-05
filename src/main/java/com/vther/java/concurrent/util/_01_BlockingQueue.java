@@ -53,7 +53,7 @@ public class _01_BlockingQueue {
 
         @Override
         public long getDelay(TimeUnit unit) {
-            return unit.toSeconds(100);
+            return 20;
         }
 
         @Override
@@ -62,13 +62,21 @@ public class _01_BlockingQueue {
         }
     }
 
+    @Test
+    public void testDelayed() {
+        DelayedElement delayedElement = new DelayedElement();
+
+        System.out.println(TimeUnit.DAYS.toSeconds(1));
+        System.out.println(delayedElement.getDelay(TimeUnit.HOURS));
+
+    }
+
     class Producer implements Runnable {
         BlockingQueue<String> queue = null;
-
         Producer(BlockingQueue<String> queue) {
             this.queue = queue;
         }
-
+        @Override
         public void run() {
             try {
                 queue.put("1");
@@ -84,11 +92,10 @@ public class _01_BlockingQueue {
 
     class Consumer implements Runnable {
         BlockingQueue<String> queue = null;
-
         Consumer(BlockingQueue<String> queue) {
             this.queue = queue;
         }
-
+        @Override
         public void run() {
             try {
                 System.out.println(queue.take());
