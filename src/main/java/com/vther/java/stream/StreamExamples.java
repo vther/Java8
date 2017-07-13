@@ -4,6 +4,7 @@ package com.vther.java.stream;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -65,4 +66,17 @@ public class StreamExamples {
                 )
                 .collect(Collectors.toList()).forEach(a -> System.out.print(a[0] + " " + a[1] + "\r\n"));
     }
+
+
+    /*
+    在一个字符串列表中，找出包含最多小写字母的字符串。对于空列表，返回Optional<String> 对象
+     */
+    @Test
+    public void example5() {
+        List<String> list = Arrays.asList("aaAS", "ballAAA", "carDE");
+        list.stream()
+                .max(Comparator.comparingLong(a -> a.chars().filter(Character::isLowerCase).count()))
+                .ifPresent(System.out::println);
+    }
 }
+
